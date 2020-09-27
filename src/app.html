@@ -1,0 +1,17 @@
+<template>
+  
+
+  <div> Number of d6 dice: 
+    <input type="number" value.bind="numD6">
+  </div>
+
+  <div> Number of d4 dice: 
+    <input type="number" value.bind="numD4">
+  </div>
+  
+  <div>
+    <button click.delegate="onClickRollDice()"> ROLL THEM </button>
+  </div>
+
+  <h1>${message}</h1>
+</template>
