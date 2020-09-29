@@ -61,7 +61,7 @@
     "build:dev": "webpack --extractCss",
     "analyze": "webpack --env.production --analyze",
     "test": "au test",
-    "deploy": "rm -f docs/* && rm -f dist/* && au build env --prod && xcopy dist docs && git add . && git commit -m 'Deploying' && git push origin gh-pages"
+    "deploy": "git add . && git commit -m 'Deploying' && git push origin master && git checkout gh-pages && git merge gh-pages master && rm -f docs/* && rm -f dist/* && au build env -prod && xcopy dist docs && git add . && git commit -m 'Deploying' && git push origin gh-pages && git checkout master"
   },
   "engines": {
     "node": ">=10.12.0"
