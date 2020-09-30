@@ -1,4 +1,6 @@
 <template>
+  <require from="./app.css"></require>
+
   <h2>Enter the number of d6's and d4's you would like to roll then click ROLL THEM. Resulting number of the number of 1's shown on the dice faces. </h2>
 
   <div> Website for use with The Price of Power ttRPG. Dice roll randomized using RANDOM.org.</div>
@@ -15,5 +17,6 @@
     <button click.delegate="onClickRollDice()"> ROLL THEM </button>
   </div>
 
-  <h1>${successes}</h1>
+  <div class="success">${successes}</div>
 </template>
+

@@ -3,9 +3,6 @@ let RandomOrg = require('random-org');
 export class App {
   public successes = 'Number of Successes';
 
-  // remove this comment
-
-
 public numD6 = 0;
 public numD4 = 0;
 private totalSuccesses = 0;
