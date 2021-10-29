@@ -18,5 +18,14 @@
   </div>
 
   <div class="success">${successes}</div>
+
+  <!--a button to clear all results-->
+  <div>
+    <button click.delegate="clearResults()"> CLEAR ALL RESULTS </button>
+
+  <!--a repeating div to show previous results with timestamp-->
+  <div repeat.for="result of results">
+    <div>You rolled a ${result.result} at ${result.timestamp}</div>
+
 </template>
 

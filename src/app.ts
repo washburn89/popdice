@@ -1,17 +1,18 @@
+import * as moment from "moment";
+
 let RandomOrg = require('random-org');
 
 export class App {
-  public successes = 'Number of Successes';
-
+public successes = 'Number of Successes';
 public numD6 = 0;
 public numD4 = 0;
 private totalSuccesses = 0;
+private results: {result: string, timestamp: string}[] = [];
 
   private async getRandomIntsFromOneToMax(max: number, count: number) {
-
     if (count > 30){
       console.error('TOO MANY DICE');
-      
+      this.successes = 'Too many dice, must be 30 or less';
     }else{
       let random = new RandomOrg({ apiKey: 'ab5f7285-94f1-4c60-8b1d-a8d4a343745b' });
       let randNumInRange = await random.generateIntegers({ min: 1, max: max, n: count}).then((result: any) => {
@@ -38,7 +39,15 @@ private totalSuccesses = 0;
     this.totalSuccesses = await this.rollDice(this.numD6, this.numD4)
 
     this.successes = this.totalSuccesses.toString();
+    // add successes to results with timestamp
+    this.results.unshift({result: this.successes, timestamp: moment().format('h:mm:ss a')});
+    if(this.results.length > 10){
+      this.results.pop();
+    }
+  }
 
+  private clearResults(){
+    this.results = [];
   }
 
   public async rollDice(d6s: number, d4s: number): Promise<number>{
@@ -67,5 +76,4 @@ private totalSuccesses = 0;
   return successes;
   }
 }
-
 
